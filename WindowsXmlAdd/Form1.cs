@@ -16,5 +16,20 @@ namespace WindowsXmlAdd
         {
             InitializeComponent();
         }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("Erkek Secildi.");
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("Kız Secildi.");
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("LGBT Secildi.");
+        }
     }
 }
