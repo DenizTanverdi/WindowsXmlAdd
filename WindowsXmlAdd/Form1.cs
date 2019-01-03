@@ -71,5 +71,13 @@ namespace WindowsXmlAdd
                 dataGridView1.DataSource = okunanOgrenciler;
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+            ds.ReadXml("C:\\Users\\iau\\Desktop\\deneme.xml");
+            
+
+        }
     }
 }
