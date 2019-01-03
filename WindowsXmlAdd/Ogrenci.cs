@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsXmlAdd
 {
-    class Ogrenci
+   public class Ogrenci
     {
         private Guid id;
 
@@ -46,7 +46,7 @@ namespace WindowsXmlAdd
 
 
     }
-    enum cinsiyet
+   public enum cinsiyet
     {
         Kadın=1,
         Erkek=2,
