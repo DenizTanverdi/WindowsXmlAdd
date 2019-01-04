@@ -23,12 +23,12 @@ namespace WindowsXmlAdd
 
 
 
-      
+
 
         private void button1_Click(object sender, EventArgs e)
         {
             Ogrenci o = new Ogrenci();
-            o.Id = Guid.NewGuid() ;
+            o.Id = Guid.NewGuid();
             o.Adi = txtName.Text;
             o.Soyadi = txtBxSurname.Text;
             o.DogumTarihi = dateTime.Value;
@@ -50,7 +50,7 @@ namespace WindowsXmlAdd
             saveFileOgrenci.Filter = "*.xml|*.xml";
             saveFileOgrenci.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             XmlSerializer srl = new XmlSerializer(typeof(List<Ogrenci>));
-            if (saveFileOgrenci.ShowDialog()==DialogResult.OK)
+            if (saveFileOgrenci.ShowDialog() == DialogResult.OK)
             {
                 TextWriter tw = new StreamWriter(saveFileOgrenci.FileName);
                 srl.Serialize(tw, ogrenciList);
@@ -63,10 +63,10 @@ namespace WindowsXmlAdd
         {
             List<Ogrenci> okunanOgrenciler = new List<Ogrenci>();
             XmlSerializer srl = new XmlSerializer(typeof(List<Ogrenci>));
-            if (openFileDialog1.ShowDialog()==DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 TextReader tr = new StreamReader(openFileDialog1.FileName);
-                okunanOgrenciler = (List < Ogrenci >) srl.Deserialize(tr);
+                okunanOgrenciler = (List<Ogrenci>)srl.Deserialize(tr);
                 tr.Close();
                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = okunanOgrenciler;
@@ -77,11 +77,11 @@ namespace WindowsXmlAdd
         {
             DataSet ds = new DataSet();
             ds.ReadXml("C:\\Users\\iau\\Desktop\\deneme.xml");
-            
+
 
         }
 
-        
+
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -109,7 +109,7 @@ namespace WindowsXmlAdd
         private void button6_Click(object sender, EventArgs e)
         {
             List<Ogrenci> okunanOgrenciler = new List<Ogrenci>();
-           // BinaryFormatter srl = new BinaryFormatter(typeof(List<Ogrenci>));
+            // BinaryFormatter srl = new BinaryFormatter(typeof(List<Ogrenci>));
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 using (FileStream fsRead = new FileStream(openFileDialog1.FileName, FileMode.Open))
@@ -117,8 +117,7 @@ namespace WindowsXmlAdd
                     BinaryFormatter bfRead = new BinaryFormatter();
                     okunanOgrenciler = (List<Ogrenci>)bfRead.Deserialize(fsRead);
                 }
-
-                dataGridView1.DataSource = null;
+                 dataGridView1.DataSource = null;
                 dataGridView1.DataSource = okunanOgrenciler;
             }
         }
