@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -78,6 +79,31 @@ namespace WindowsXmlAdd
             ds.ReadXml("C:\\Users\\iau\\Desktop\\deneme.xml");
             
 
+        }
+
+        
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                saveFileOgrenci.Title = "Öğrenci Bilgileri Kayıt";
+                saveFileOgrenci.Filter = "*.ktc|*.ktc";
+                saveFileOgrenci.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                if (saveFileOgrenci.ShowDialog() == DialogResult.OK)
+                {
+                    using (FileStream fsWrite = new FileStream(saveFileOgrenci.FileName, FileMode.Create))
+                    {
+                        BinaryFormatter bfWrite = new BinaryFormatter();
+                        bfWrite.Serialize(fsWrite, ogrenciList);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Hata:" + ex.Message);
+            }
         }
     }
 }
