@@ -105,5 +105,22 @@ namespace WindowsXmlAdd
                 throw new Exception("Hata:" + ex.Message);
             }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            List<Ogrenci> okunanOgrenciler = new List<Ogrenci>();
+           // BinaryFormatter srl = new BinaryFormatter(typeof(List<Ogrenci>));
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fsRead = new FileStream(openFileDialog1.FileName, FileMode.Open))
+                {
+                    BinaryFormatter bfRead = new BinaryFormatter();
+                    okunanOgrenciler = (List<Ogrenci>)bfRead.Deserialize(fsRead);
+                }
+
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = okunanOgrenciler;
+            }
+        }
     }
 }
